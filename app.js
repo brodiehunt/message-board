@@ -3,6 +3,7 @@ const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
+const {connectDB} = require('./config/dbcon')
 const path = require('path');
 require('dotenv').config();
 
@@ -15,12 +16,22 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+let mongoDBURI;
+
+if (process.env.NODE_ENV === 'development' ) {
+    mongoDBURI = process.env.DEV_DB;
+} else if (process.env.NODE_ENV === 'test') {
+    mongoDBURI = process.env.TEST_DB;
+} else {
+    mongoDBURI = process.env.PROD_DB
+}
+// {mongoUrl: mongoDBURI}
 
 app.use(session({
     secret: 'Fill in from dot env',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({mongoUrl: process.env.DEV_DB})
+    store: MongoStore.create({mongoUrl: mongoDBURI})
 }))
 
 // Views 
