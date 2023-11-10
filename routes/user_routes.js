@@ -1,23 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const userController = require('../controllers/user_controller');
 
 
-router.get('/sign-in', (rea, res) => {
-    res.render('sign-in')
-})
+router.get('/sign-in', userController.getSignIn);
 
-router.post('/sign-in', (req, res) => {
-    console.log('hit route')
-})
+router.post('/sign-in', userController.submitSignIn);
 
-router.get('/sign-up', (req, res) => {
-    res.render('sign-up');
-});
+router.get('/sign-up', userController.getSignUp);
 
-router.post('/sign-up', (req, res) => {
-    console.log('route hit');
-    res.send('form completed');
-})
+router.post('/sign-up', userController.submitSignUp);
 
 router.get('/sign-out', (req, res) => {
     res.send('signing oout')

@@ -27,6 +27,7 @@ if (process.env.NODE_ENV === 'development' ) {
 }
 // {mongoUrl: mongoDBURI}
 
+// express-session config -- mongostore
 app.use(session({
     secret: 'Fill in from dot env',
     resave: false,
@@ -34,15 +35,14 @@ app.use(session({
     store: MongoStore.create({mongoUrl: mongoDBURI})
 }))
 
-// Views 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-
-// passport
+// passport configuration
 require('./config/passport');
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Views 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 
 // Routes
