@@ -29,7 +29,6 @@ exports.handleValidationErrors = async (req, res, next) => {
         })
     }
     next();
-    
 }
 // check if username or email already exists
 exports.checkUserExists = async (req, res, next) => {

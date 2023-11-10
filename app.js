@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const {connectDB} = require('./config/dbcon')
+const {errorHandler, noRouteDefined} = require('./middleware/error_handling_middleware');
 const path = require('path');
 require('dotenv').config();
 
@@ -15,6 +16,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(express.static("public"));
 
 let mongoDBURI;
 
@@ -53,7 +55,8 @@ app.get('/', (req, res) => {
 
 app.use('/users', userRouter);
 app.use('/messages', messageRouter);
+app.use(noRouteDefined);
 
-app.use(express.static("public"));
+app.use(errorHandler);
 
 module.exports = app;
