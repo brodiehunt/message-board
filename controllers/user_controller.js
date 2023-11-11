@@ -30,15 +30,13 @@ exports.submitSignUp = [
 
 // SIGN IN
 exports.getSignIn = (req, res) => {
+    const failureMessages = req.flash('error');
     return res.render('sign-in', {
-        errors: [],
+        errors: failureMessages,
         formData: null
     });
 }
 
-exports.submitSignIn = async (req, res) => {
-
-}
 // SIGN OUT
 exports.signOut = async (req, res) => {
     req.logout((err) => {

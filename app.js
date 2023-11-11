@@ -2,6 +2,7 @@ const express = require('express');
 const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const flash = require('connect-flash');
 const session = require('express-session');
 const {connectDB} = require('./config/dbcon')
 const {errorHandler, noRouteDefined} = require('./middleware/error_handling_middleware');
@@ -42,6 +43,8 @@ app.use(session({
 require('./config/passport');
 app.use(passport.initialize());
 app.use(passport.session());
+// error message passed to login form
+app.use(flash())
 
 // Views 
 app.set('views', path.join(__dirname, 'views'));

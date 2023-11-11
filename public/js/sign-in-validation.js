@@ -52,11 +52,8 @@ const validateFormSubmit = (event) => {
     const isPasswordValid = validatePassword(passwordField);
 
     if (isEmailValid && isPasswordValid) {
-        
-        // form.submit();
-        console.log('tried to submit');
+        form.submit();
     } else {
-        console.log('failed');
         return false;
     }
 }

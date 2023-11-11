@@ -24,9 +24,7 @@
             <h1>Sign in</h1>
             <% if (errors.length > 0) { %>
                 <div class="server-form-error">
-                    <% errors.forEach(function(error) { %>
-                        <p><%= error.msg %></p>
-                    <% }); %>
+                    <p><%= errors[0] %></p>
                 </div>
             <% } %>
             <form  method="POST" id="sign-in-form">

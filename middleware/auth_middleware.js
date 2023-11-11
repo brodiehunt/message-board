@@ -4,6 +4,7 @@ exports.authRedirect = (req, res, next) => {
     if (req.user) {
         return res.redirect('/messages/dashboard');
     }
+    console.log('going to pass it on, authredirect')
     next();
 }
 

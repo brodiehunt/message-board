@@ -6,14 +6,13 @@ const verifyCallback = async (email, password, done) => {
     try {
         const user = await User.findOne({email: email});
         if (!user) {
-            return done(null, false, {message: {email: "Incorrect email"}});
+            return done(null, false);
         }
         if (!user.verifyPassword(password)) {
-            return done(null, false, {message: {password: "Incorrect password"}});
+            return done(null, false);
         }
         return done(null, user);
     } catch (error) {
-        console.log('err');
         done(err)
     }
 }
@@ -23,6 +22,7 @@ const stratOpts = {
 };
 
 passport.use(new LocalStrategry(stratOpts, verifyCallback));
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 })
