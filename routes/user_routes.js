@@ -1,18 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/user_controller');
+const authMiddleware = require('../middleware/auth_middleware');
 
+router.get('/sign-in', authMiddleware.authRedirect, userController.getSignIn);
 
-router.get('/sign-in', userController.getSignIn);
+router.post('/sign-in', authMiddleware.authRedirect, userController.submitSignIn);
 
-router.post('/sign-in', userController.submitSignIn);
+router.get('/sign-up', authMiddleware.authRedirect, userController.getSignUp);
 
-router.get('/sign-up', userController.getSignUp);
+router.post('/sign-up', authMiddleware.authRedirect, userController.submitSignUp);
 
-router.post('/sign-up', userController.submitSignUp);
-
-router.get('/sign-out', (req, res) => {
-    res.send('signing oout')
-})
+router.get('/sign-out', authMiddleware.authorize, userController.signOut);
 
 module.exports = router;

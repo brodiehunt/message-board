@@ -25,7 +25,7 @@ exports.handleValidationErrors = async (req, res, next) => {
     if (!errors.isEmpty()) {
         return res.render('sign-up', {
             errors: errors.array(),
-            data: req.body
+            formData: req.body
         })
     }
     next();
@@ -43,7 +43,8 @@ exports.checkUserExists = async (req, res, next) => {
         if (existingUser.length !== 0) {
             const message = {msg: 'Username or email already in use', path: 'form'}
             return res.render('sign-up', {
-                errors: [message]
+                errors: [message],
+                formData: req.body
             })
         }
         next();

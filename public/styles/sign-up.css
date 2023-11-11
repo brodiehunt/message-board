@@ -1,0 +1,234 @@
+* {
+    --text-heading: #13183F;
+    --text-body: #83869A;
+    --gradient-1: linear-gradient(180deg, #FF6F48 0%, #F02AA6 100%);
+    --gradient-2: linear-gradient(180deg, #4851FF 0%, #F02AA6 100%);
+    --hover-gradient: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, #4851FF -54.32%, #F02AA6 100%);
+    --pink: #F74780;
+}
+
+body {
+    background-color: #f3f4f6; /* Soft gray */
+}
+
+header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.btn {
+    all: unset;
+    box-sizing: border-box;
+    font-size: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.btn.primary:hover {
+    background-color: #666CA3;
+}
+
+.btn.secondary:hover {
+    background-color: #666CA3;
+    color: white;
+}
+
+.btn.primary {
+    background-color: var(--text-heading);
+    color: white;
+    border-radius: 1.75rem;
+    /* border: 1px solid var(--text-heading) */
+}
+
+.btn.secondary {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-heading);
+    border-radius: 1.75rem;
+    text-decoration:underline;
+    /* border: 1px solid var(--text-heading); */
+}
+
+header h2 {
+    color: var(--text-heading);
+}
+
+.statement-container {
+    padding: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.statement-container .first{
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+.first span {
+    color: var(--pink);
+}
+
+.statement-container .second {
+    color: var(--text-body);
+    font-weight: 500;
+}
+
+main {
+   padding: 0 1rem;
+}
+
+.img-container {
+    width: 80%;
+    margin: 0 auto;
+}
+img {
+    width: 100%;
+}
+
+
+.form-container {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 8px; /* Adds rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: white;
+}
+
+.form-container h1 {
+    color: var(--text-heading);
+    margin-bottom: 1rem;
+}
+
+form {
+    width: 100%;
+}
+.server-form-error {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #FF5050;
+    box-shadow: 0 0 5px rgba(255, 82, 82, 1);
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 82, 82, 0.1)
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+form div:nth-last-child(1) {
+    /* margin-bottom: 2rem; */
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    display: block;
+    padding: 0.7rem 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--Light-Grey, #DFDEE0);
+    background: var(--White, #FFF);
+    color: var(--text-body);
+}
+.form-group input.error {
+    border: 1px solid #FF5050;
+    box-shadow: 0 0 5px rgba(255, 82, 82, 1);
+}
+
+.form-group .error-container {
+    color: #FF5050;
+    font-size: 0.7rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border: 2px solid var(--text-heading);
+    box-shadow: 0 0 5px rgba(18, 23, 64, 1);
+}
+
+form .btn {
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+    outline: none;
+    border: none;
+    text-align: center;
+    color: white;
+    background: var(--gradient-1);
+    margin-top: 2rem;
+    transition: all 0.2s ease-in;
+}
+
+form .btn:hover {
+    background: var(--pink);
+}
+
+@media only screen and (min-width: 768px) {
+    .main-container {
+        max-width: 80%;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    header {
+        padding: 1rem 4rem;
+    }
+
+    .statement-container {
+        text-align: center;
+    }
+    .statement-container .first {
+        font-size: 2.5rem;
+    }
+
+
+    .main-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+        margin-top: 1rem;
+        max-width: 1024px;
+    }
+
+    .form-container {
+        margin-top: 2rem;
+        padding: 2em;  
+    }
+
+    .form-container h1 {
+        font-size: 3rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    form .btn {
+        font-size: 1rem;
+        padding: 1rem 0;
+    }
+}

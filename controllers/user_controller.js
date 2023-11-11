@@ -3,7 +3,10 @@ const userUtils = require('../utils/user')
 
 // SIGN UP -- CREATE USER
 exports.getSignUp = (req, res) => {
-    res.render('sign-up');
+    return res.render('sign-up', {
+        errors: [],
+        formData: null
+    });
 }
 
 exports.submitSignUp = [
@@ -27,7 +30,10 @@ exports.submitSignUp = [
 
 // SIGN IN
 exports.getSignIn = (req, res) => {
-    res.render('sign-in');
+    return res.render('sign-in', {
+        errors: [],
+        formData: null
+    });
 }
 
 exports.submitSignIn = async (req, res) => {
@@ -35,7 +41,12 @@ exports.submitSignIn = async (req, res) => {
 }
 // SIGN OUT
 exports.signOut = async (req, res) => {
-
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/');
+    })
 }
 
 // VIEW PROFILE

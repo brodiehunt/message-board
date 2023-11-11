@@ -5,6 +5,7 @@ const passport = require('passport');
 const session = require('express-session');
 const {connectDB} = require('./config/dbcon')
 const {errorHandler, noRouteDefined} = require('./middleware/error_handling_middleware');
+const authMiddleware = require('./middleware/auth_middleware');
 const path = require('path');
 require('dotenv').config();
 
@@ -16,7 +17,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 let mongoDBURI;
 
@@ -48,14 +49,14 @@ app.set('view engine', 'ejs');
 
 
 // Routes
-app.get('/', (req, res) => {
-    console.log('/');
+app.get('/', authMiddleware.authRedirect, (req, res) => {
+    console.log(req.session);
     res.render('home')
 })
 
 app.use('/users', userRouter);
-app.use('/messages', messageRouter);
-app.use(noRouteDefined);
+app.use('/messages', authMiddleware.authorize, messageRouter);
+// app.use(noRouteDefined);
 
 app.use(errorHandler);
 

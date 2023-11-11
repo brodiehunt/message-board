@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="/styles/styles.css">
+    <link rel="stylesheet"  href="/styles/sign-in.css">
     <title>Message Board</title>
 </head>
 <body>
-    <h1>Sign in</h1>
+    <header>
+        <h2>Logo</h2>
+        <nav>
+            
+            <button class="btn secondary">Log in</button>
+            <button class="btn primary">Register</button>
+        </nav>
+    </header>
+    <main>
+        <div class="form-container">
+            <h1>Sign in</h1>
+            <% if (errors.length > 0) { %>
+                <div class="server-form-error">
+                    <% errors.forEach(function(error) { %>
+                        <p><%= error.msg %></p>
+                    <% }); %>
+                </div>
+            <% } %>
+            <form  method="POST" id="sign-in-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="text" 
+                        id="email" 
+                        name="email" 
+                        class="form-input email" 
+                        placeholder="e.g email@email.com" 
+                        value="<%= formData ? formData.email : '' %>"
+                    >
+                    <div class="error-container email-err"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name='password' 
+                        class="form-input password" 
+                        value="<%= formData ? formData.password : '' %>"
+                    >
+                    <div class="error-container password-err"></div>
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+        </div>
+    </main>
+    <script src="/js/sign-in-validation.js"></script>
 </body>
 </html>

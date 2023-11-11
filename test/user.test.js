@@ -12,9 +12,10 @@ afterAll(async () => {
     await disconnectDB();
 });
 
-describe('test the test', () => {
-    test ('Should work', () => {
-        expect('test to work user').toBe('test to work user');
-    })
-    
+describe('GET /users/sign-up', () => {
+    test ('get 200 ok response', async () => {
+
+        const response = await request(app).get('/users/sign-up');
+        expect(response.statusCode).toBe(200);
+    }) 
 })
