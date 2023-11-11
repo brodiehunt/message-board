@@ -3,9 +3,106 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    --text-heading: #13183F;
+    --text-body: #83869A;
+    --gradient-1: linear-gradient(180deg, #FF6F48 0%, #F02AA6 100%);
+    --gradient-2: linear-gradient(180deg, #4851FF 0%, #F02AA6 100%);
+    --hover-gradient: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, #4851FF -54.32%, #F02AA6 100%);
+    --pink: #F74780;
 }
 
 body {
     min-height: 100vh;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+}
+
+
+/* Header styles */
+
+header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+header img {
+    max-width: 35px;
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.btn {
+    all: unset;
+    box-sizing: border-box;
+    font-size: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.btn.primary:hover {
+    background-color: #666CA3;
+}
+
+.btn.secondary:hover {
+    background-color: #666CA3;
+    color: white;
+}
+
+.btn.primary {
+    background-color: var(--text-heading);
+    color: white;
+    border-radius: 1.75rem;
+    /* border: 1px solid var(--text-heading) */
+}
+
+.btn.secondary {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-heading);
+    border-radius: 1.75rem;
+    text-decoration:underline;
+    /* border: 1px solid var(--text-heading); */
+}
+
+header h2 {
+    color: var(--text-heading);
+}
+
+/* Footer styles */
+footer {
+    width: 100%;
+    background-color: var(--text-heading);
+    padding: 1rem;
+    position: absolute;
+    bottom: 0px;
+    
+}
+
+.copyright {
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1024px) {
+    header {
+        padding: 1rem 4rem;
+    }
 }

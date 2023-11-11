@@ -11,14 +11,7 @@
     <title>Message Board</title>
 </head>
 <body>
-    <header>
-        <h2>Logo</h2>
-        <nav>
-            
-            <button class="btn secondary">Log in</button>
-            <button class="btn primary">Register</button>
-        </nav>
-    </header>
+    <%- include('partials/header') %>
     <main>
         <div class="form-container">
             <h1>Sign in</h1>
@@ -55,6 +48,7 @@
             </form>
         </div>
     </main>
+    <%- include('partials/footer') %>
     <script src="/js/sign-in-validation.js"></script>
 </body>
 </html>

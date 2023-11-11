@@ -11,14 +11,7 @@
     <title>Message board</title>
 </head>
 <body>
-    <header>
-        <h2>Logo</h2>
-        <nav>
-            
-            <button class="btn secondary">Log in</button>
-            <button class="btn primary">Register</button>
-        </nav>
-    </header>
+    <%- include('partials/header') %>
     <div class="statement-container">
         <p class="first">Become a Part of the <span>Conversation</span></p>
         <p class="second"> Where your thoughts shape the community.</p>
@@ -87,6 +80,7 @@
             </form>
         </div>
     </main>
+    <%- include('partials/footer') %>
     <script src="/js/sign-up-validation.js"></script>
 </body>
 </html>
