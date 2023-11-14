@@ -29,7 +29,7 @@ exports.submitNewMessage = async (req, res, next) => {
 exports.likeMessage = async (req, res, next) => {
     try {
         const message = await messageUtils.likeMessageUtil(req);
-        res.status(200);
+        res.status(201);
         res.json({
             messageLikes: message.likes
         });
@@ -38,4 +38,18 @@ exports.likeMessage = async (req, res, next) => {
     }
 }
 
-//
+// Add a comment 
+
+exports.addComment = async (req, res, next) => {
+    try {
+        const message = await messageUtils.addCommentUtil(req);
+        res.status(201);
+        res.json({
+            comment: req.body.comment,
+            user: req.user.username
+
+        })
+    } catch (err) {
+        next(err);
+    }
+}

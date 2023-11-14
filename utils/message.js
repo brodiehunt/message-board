@@ -21,7 +21,23 @@ exports.submitNewMessageUtil = async (req) => {
 exports.likeMessageUtil = async (req, res, next) => {
     const message = await Message.findById(req.body.messageId);
     message.likes ??= 1;
-    message.likes = message.likes + 1;
+    message.likes += 1;
     await message.save();
     return message;
+}
+
+exports.addCommentUtil = async (req) => {
+    const message = await Message.findById(req.body.messageId);
+    const newComment = {
+        user: req.user.username,
+        comment: req.body.comment
+    }
+    if (message.comments) {
+        message.comments.push(newComment);
+    } else {
+        message.comments = [newComment];
+    }
+    await message.save();
+    return message;
+
 }
