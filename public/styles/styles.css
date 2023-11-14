@@ -15,8 +15,18 @@ body {
     min-height: 100vh;
     font-family: 'Plus Jakarta Sans', sans-serif;
     position: relative;
+    background-color: #f3f4f6; /* Soft gray */
+    color: var(--text-body);
 }
 
+h1, h2, h3 {
+    color: var(--text-heading);
+}
+
+*:focus {
+    outline: 2px solid var(--text-heading);
+    box-shadow: 0 0 5px var(--text-heading);
+}
 
 /* Header styles */
 
@@ -42,15 +52,13 @@ nav {
 }
 
 .btn {
-    all: unset;
-    box-sizing: border-box;
     font-size: 0.75rem;
     padding: 0.5rem 1.25rem;
     background-color: white;
-    border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease-in;
+    text-decoration: none;
 }
 
 .btn.primary:hover {

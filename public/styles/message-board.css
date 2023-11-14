@@ -1,0 +1,124 @@
+main {
+    padding: 1rem;
+    padding-bottom: 6rem;
+    max-width: 1024px;
+    margin: 0 auto;
+ }
+
+ main h1 {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+ }
+
+ main .post-message-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px; /* Adds rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 2rem;
+ }
+
+ .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+    margin-top: 0.6rem;
+    /* visibility: hidden; */
+}
+
+.form-group .text-area,
+.form-group .form-input {
+    display: block;
+    padding: 0.7rem 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--Light-Grey, #DFDEE0);
+    background: var(--White, #FFF);
+    color: var(--text-body);
+}
+
+.form-group input:focus {
+    outline: none;
+    border: 2px solid var(--text-heading);
+    box-shadow: 0 0 5px rgba(18, 23, 64, 1);
+}
+
+form .btn {
+   
+    border-radius: 0.5rem;
+    padding: 0.7rem 2rem;
+    outline: none;
+    border: none;
+    text-align: center;
+    color: white;
+    background: var(--gradient-1);
+    margin: 1.5rem auto;
+    margin-top: 1rem;
+    transition: all 0.2s ease-in;
+}
+
+form .btn:hover {
+    background: var(--pink);
+}
+
+main .messages-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px; /* Adds rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.messages-container .message-container {
+    padding: 1rem;
+    background-color: rgba(243, 244, 246, 0.5); /* Soft gray */
+    border-radius: 8px; /* Adds rounded corners */
+}
+
+.message-container .message-content {
+    padding: 1rem;
+    border-bottom: 1px solid lightgray;
+}
+.message-container .message-stats,
+.message-container .message-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.message-info .user {
+    font-size: 1.2rem;
+    color: var(--text-heading);
+}
+
+.message-container h3 {
+    padding: 0 1rem;
+}
+
+.message-stats .likes,
+.message-stats .comments {
+    display: flex;
+    align-items: center;
+    color: var(--text-heading);
+    font-size: 0.8rem;
+}
+
+.likes svg {
+    height: 20px; 
+    width: 20px;
+    margin-right: 0.5rem;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+
+.comments button {
+    all: unset;
+}
+
+.message-stats button {
+    margin-left: 0.5rem;
+}

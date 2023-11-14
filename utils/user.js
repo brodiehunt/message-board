@@ -23,10 +23,18 @@ exports.handleValidationErrors = async (req, res, next) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.render('sign-up', {
-            errors: errors.array(),
-            formData: req.body
-        })
+        if (req.formSource === 'signUp') {
+            return res.render('sign-up', {
+                errors: errors.array(),
+                formData: req.body
+            })
+        }
+        if (req.formSource === 'profileUpdate') {
+            return res.render('profile', {
+                errors: errors.array(),
+                formData: req.body
+            })
+        }
     }
     next();
 }
@@ -39,15 +47,60 @@ exports.checkUserExists = async (req, res, next) => {
                 { email: req.body.email}
             ]
         });
-        
         if (existingUser.length !== 0) {
+            console.log('existing user', existingUser)
             const message = {msg: 'Username or email already in use', path: 'form'}
-            return res.render('sign-up', {
-                errors: [message],
-                formData: req.body
-            })
+            if (req.body.formSource === 'signUp') {
+                return res.render('sign-up', {
+                    errors: [message],
+                    formData: req.body
+                })
+            }
+            if (req.body.formSource === 'profileUpdate') {
+                return res.render('profile', {
+                    errors: [message],
+                    formData: req.body
+                })
+            }
         }
         next();
+    } catch (error) {
+        next(err);
+    }
+}
+
+exports.checkSecretKey = (req, res, next) => {
+    console.log('check secret', req.body.secret, process.env.ADMIN_SECRET)
+    if (req.body.secret !== process.env.ADMIN_SECRET) {
+        return res.redirect('/users/profile', {
+            errors: [],
+            formData: {
+                email: req.user.email,
+                username: req.user.username,
+            }
+        })
+    }
+    next();
+};
+
+exports.addAdminStat = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id);
+        user.isAdmin = true;
+        await user.save();
+        return user;
+    } catch (err) {
+        next(err)
+    }
+}
+
+exports.updateProfileUtil = async (req,res, next) => {
+    try {
+        const user = await User.findById(req.user.id);
+        user.username = req.body.username;
+        user.email = req.body.email;
+        await user.save();
+        return user;
     } catch (error) {
         next(err);
     }
@@ -75,4 +128,16 @@ exports.validateSignUp = [
         .escape()
         .custom((value, { req }) => value === req.body.password)
     .withMessage('Password confirmation does not match password')
+];
+
+exports.validateUpdate = [
+    body('username', 'Username is required')
+        .trim()
+        .isLength({min: 3, max: 20})
+        .withMessage('Username must be more than 2 and less than 20 characters')
+        .escape(),
+    body('email', 'Must be a correct email: example@email.com')
+        .trim()
+        .isEmail()
+        .escape(),
 ];

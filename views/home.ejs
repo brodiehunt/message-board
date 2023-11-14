@@ -7,11 +7,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet"  href="/styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/home.css">
     <title>Message Board</title>
 </head>
 <body>
     <%- include('partials/header') %>
-    <h1>Hello world, welcome to the homepage</h1>
+    <main>
+        <section class="hero">
+            <div class="hero-text-container">
+                <h1>Join the conversation on <span>Community Canvas</span></h1>
+                <p>Dive into a community the values your voice! A friendly online message board.</p>
+                <p>Its anonymous, unless you're a secret member!</p>
+                <a href="/users/sign-up">Get started</a>
+            </div>
+            <div class="hero-img-container">
+                <img src="/img/hero-illustration.png">
+            </div>
+        </section>
+
+        <section class="card-info">
+            <h2>All the cool bits</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <img src="/img/hacker.png">
+                    <h3>Post messages anonymously</h3>
+                    <p>Post messages on our board, completely anonymous.</p>
+                </div>
+                <div class="card">
+                    <img src="/img/comment.png">
+                    <h3>Comment on other users posts</h3>
+                    <p> Comment on users posts and start the converstation.</p>
+                </div>
+                <div class="card">
+                    <img src="/img/key.png">
+                    <h3>Have the secret key?</h3>
+                    <p>With the secret key you be one of the few that can see the users behind a post.</p>
+                </div>
+            </div>
+        </section>
+    </main>
     <%- include('partials/footer') %>
 </body>
 </html>

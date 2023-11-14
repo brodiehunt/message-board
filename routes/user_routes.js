@@ -15,4 +15,10 @@ router.post('/sign-up', authMiddleware.authRedirect, userController.submitSignUp
 
 router.get('/sign-out', authMiddleware.authorize, userController.signOut);
 
+router.get('/profile', authMiddleware.authorize, userController.getProfile);
+
+router.post('/profile', authMiddleware.authorize, userController.updateProfile);
+
+router.post('/secretSubmit', authMiddleware.authorize, userController.secretKeySubmit);
+
 module.exports = router;

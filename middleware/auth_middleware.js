@@ -10,6 +10,7 @@ exports.authRedirect = (req, res, next) => {
 
 // Is person allowed to view resource? if not logged in they can only view three pages
 exports.authorize = (req, res, next) => {
+    console.log(req.user);
     if (!req.user) {
         return res.redirect('/')
     };

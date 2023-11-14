@@ -1,54 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Board</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet"  href="/styles/styles.css">
-    <link rel="stylesheet"  href="/styles/message-board.css">
-</head>
-<body>
-    <%- include('partials/headerLoggedIn') %>
-    <main>
-        <h1>Message Board</h1>
-        <div class="post-message-container">
-            <h2>Post a message</h2>
-            <form class="post-message" id="post-message" action="/messages/postMessage" method="POST">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input 
-                        type="text" 
-                        id="title" 
-                        name="title" 
-                        class="form-input title" 
-                        placeholder="e.g The weather has been crazy" 
-                        required
-                    >
-                    
-                </div>
-                <div class="form-group">
-                    <label for="message">New message</label>
-                    <textarea class='form-input text-area' 
-                    id="message" 
-                    name="message" 
-                    maxlength=1000 
-                    placeholder="Type your message here"
-                    rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-        <div class="messages-container">
-            <% messages.forEach(function(message) { %>
+<% messages.forEach(function(message) { %>
                 <div class="message-container">
                     <div class="message-info">
                         <div class='user'><%= message.user %></div>
                         <div class="time"><%= message.formattedDate %></div>
                     </div>
-                    <h3><%= message.title %></h3>
+                    <h2><%= message.title %></h2>
                     <div class="message-content">
                         <%= message.content %>
                     </div>
@@ -91,9 +47,6 @@
     
                     </div>
                 </div>
-            <% }); %> 
-        </div>
-    </main>
-    <%- include('partials/footer') %>
-</body>
-</html>
+
+                
+            <% }); %>
