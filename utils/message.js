@@ -17,3 +17,11 @@ exports.submitNewMessageUtil = async (req) => {
     return newMessage;
 
 }
+
+exports.likeMessageUtil = async (req, res, next) => {
+    const message = await Message.findById(req.body.messageId);
+    message.likes ??= 1;
+    message.likes = message.likes + 1;
+    await message.save();
+    return message;
+}

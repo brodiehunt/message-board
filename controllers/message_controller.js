@@ -27,7 +27,15 @@ exports.submitNewMessage = async (req, res, next) => {
 
 // User likes message - Send back json to manipulate dom.
 exports.likeMessage = async (req, res, next) => {
-
+    try {
+        const message = await messageUtils.likeMessageUtil(req);
+        res.status(200);
+        res.json({
+            messageLikes: message.likes
+        });
+    } catch (err) {
+        next(err);
+    }
 }
 
 //
