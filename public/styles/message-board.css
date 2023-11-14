@@ -81,6 +81,9 @@ main .messages-container {
 .message-container .message-content {
     padding: 1rem;
     border-bottom: 1px solid lightgray;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: 0.8rem;
 }
 .message-container .message-stats,
 .message-container .message-info {
@@ -88,6 +91,7 @@ main .messages-container {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    font-size: 0.8rem;
 }
 
 .message-info .user {
@@ -170,7 +174,7 @@ main .messages-container {
     margin-bottom: 1rem;
 }
 
-.form-input.comment {
+.form-input.comment-input {
     display: inline-block;
     padding: 0.7rem 1rem;
     max-width: 100%;
@@ -183,6 +187,7 @@ main .messages-container {
 
 .comments-container .comment-form .btn {
     margin: 0;
+    padding: 0.5rem 2rem;
 }
 
 .comments-container .comment {
@@ -202,4 +207,24 @@ main .messages-container {
     font-weight: 600;
     color: var(--text-heading);
     
+}
+
+.comments-container.hidden {
+    display: none;
+}
+
+.comments-container {
+    display: block;
+    animation-name: animateComments;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1s;
+}
+
+@keyframes animateComments {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
 }

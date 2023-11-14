@@ -28,6 +28,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
     });
 
+    // view comments button onclick 
+    const viewCommentsButtons = document.querySelectorAll('.view-comments');
+
+    viewCommentsButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            const commentsSection = event.target.parentNode.parentElement.parentElement.children[4];
+            commentsSection.classList.toggle('hidden');
+        })
+    })
+
     // Comment form advent listeners
     const commentForms = document.querySelectorAll('.comment-form');
 
