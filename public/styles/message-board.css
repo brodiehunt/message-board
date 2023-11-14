@@ -54,15 +54,17 @@ form .btn {
     outline: none;
     border: none;
     text-align: center;
+    background: var(--text-heading);
     color: white;
-    background: var(--gradient-1);
+    border: 2px solid var(--text-heading);
     margin: 1.5rem auto;
     margin-top: 1rem;
     transition: all 0.2s ease-in;
 }
 
 form .btn:hover {
-    background: var(--pink);
+    color: var(--text-heading);
+    background: rgba(18, 23, 64, 0.1);
 }
 
 main .messages-container {

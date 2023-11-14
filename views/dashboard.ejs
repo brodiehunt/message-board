@@ -46,7 +46,12 @@
             <% messages.forEach(function(message) { %>
                 <div class="message-container" data-id="<%= message.id %>">
                     <div class="message-info">
-                        <div class='user'><%= message.user %></div>
+                        <% if(isAdmin) { %>
+                            <div class='user'><%= message.user %></div>
+                        <% } else {%>
+                            <div class='user'>Anonymous</div>
+                        <% } %>
+                        
                         <div class="time"><%= message.formattedDate %></div>
                     </div>
                     <h3><%= message.title %></h3>
@@ -103,7 +108,12 @@
                         <div class="old-comments">
                             <% message.comments.forEach(function(comment) { %>
                                 <div class="comment">
-                                    <p class="user"><%= comment.user %></p>
+                                    
+                                    <% if(isAdmin) { %>
+                                        <p class="user"><%= comment.user %> </p>
+                                    <% } else {%>
+                                        <p class="user">Anonymous </p>
+                                    <% } %>
                                     <p class="comment-content"><%= comment.comment %></p>
                                 </div>
                             <% }); %>
